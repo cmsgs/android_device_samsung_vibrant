@@ -56,6 +56,10 @@ $(call inherit-product, device/samsung/SGH-T959/media_a1026.mk)
 PRODUCT_COPY_FILES += \
     device/samsung/SGH-T959/media_profiles.xml:system/etc/media_profiles.xml
 
+# asound.conf
+PRODUCT_COPY_FILES += \
+    device/samsung/SGH-T959/prebuilt/asound.conf:system/etc/asound.conf
+
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
