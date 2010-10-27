@@ -34,7 +34,7 @@ $(call inherit-product-if-exists, vendor/samsung/SGH-T959/SGH-T959-vendor.mk)
 ## (3)  Finally, the least specific parts, i.e. the non-GSM-specific aspects
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240 \
-    rild.libpath=/system/lib/libreference-ril.so \
+    rild.libpath=/system/lib/libsec-ril.so \
     rild.libargs=-d /dev/ttyS0 \
     ro.ril.gprsclass = 10 \
     ro.ril.hsxpa=2 \
