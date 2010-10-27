@@ -99,4 +99,4 @@ BOARD_CACHE_FILESYSTEM_OPTIONS := llw,check=no,nosuid,nodev
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1
 BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1p1
 BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
-#BOARD_USES_BMLUTILS := true
+BOARD_USES_BMLUTILS := true
