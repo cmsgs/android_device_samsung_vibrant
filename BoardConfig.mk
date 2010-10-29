@@ -28,7 +28,7 @@ USE_CAMERA_STUB := true
 
 TARGET_NO_BOOTLOADER := true
 #TARGET_NO_RECOVERY := true
-#TARGET_NO_KERNEL := true
+TARGET_NO_KERNEL := true
 
 TARGET_BOARD := SGH-T959
 TARGET_BOARD_PLATFORM := s5pc110
@@ -62,11 +62,11 @@ BT_ALT_STACK := true
 BRCM_BTL_INCLUDE_A2DP := true
 BRCM_BT_USE_BTL_IF := true
 
-BOARD_EGL_CFG := device/samsung/SGH-T959/prebuilt/egl.cfg
+BOARD_EGL_CFG := device/samsung/vibrant/prebuilt/egl.cfg
 
 # Device related defines
 
-TARGET_PREBUILT_KERNEL := device/samsung/SGH-T959/kernel
+TARGET_PREBUILT_KERNEL := device/samsung/vibrant/kernel
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x02e00000
 
