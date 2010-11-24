@@ -1,5 +1,5 @@
-## Vold 2.0 Generic fstab
-## - San Mehat (san@android.com)
+## Vold 2.0 Samsung Vibrant fstab
+## - Benji Hertel
 ## 
 
 #######################
@@ -24,8 +24,8 @@
 # dev_mount sdcard /sdcard 2 /devices/platform/goldfish_mmc.0 /devices/platform/msm_sdcc.2/mmc_host/mmc1
 
 # sdcard mount for the P1
-# internal sdcard
-dev_mount emmc /mnt/emmc 1 /devices/platform/s3c-sdhci.0/mmc_host/mmc0
-
 # externel sdcard
 dev_mount sdcard /mnt/sdcard auto /devices/platform/s3c-sdhci.2/mmc_host/mmc2
+
+# internal sdcard
+dev_mount emmc /mnt/emmc 3 /devices/platform/s3c-sdhci.0/mmc_host/mmc0

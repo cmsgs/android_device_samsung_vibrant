@@ -21,6 +21,7 @@ DIRS="
 bin
 etc/dhcpcd
 etc/wifi
+firmware
 lib/egl
 lib/hw
 media
@@ -163,7 +164,7 @@ media/Disconnected.qmg
 "
 
 for FILE in $FILES; do
-adb pull system/$FILE ../../../vendor/samsung/$DEVICE/proprietary/$FILE
+    cp /home/benji/src/cmfroyo/vendor/samsung/vibrant/proprietary/$FILE ../../../vendor/samsung/$DEVICE/proprietary/$FILE
 done
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/samsung/$DEVICE/$DEVICE-vendor-blobs.mk
@@ -190,9 +191,10 @@ PRODUCT_COPY_FILES := \\
     vendor/samsung/__DEVICE__/proprietary/lib/libclientgps.so:obj/lib/libclientgps.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libcamera.so:obj/lib/libcamera.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libs3cjpeg.so:obj/lib/libs3cjpeg.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:obj/lib/libtvout.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsecgps.so:obj/lib/libsecgps.so \\
-    vendor/samsung/__DEVICE__/proprietary/lib/libsecril-client.so:obj/lib/libsecril-client.so 
- 
+    vendor/samsung/__DEVICE__/proprietary/lib/libsecril-client.so:obj/lib/libsecril-client.so
+
 PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/bin/BCM4329B1_002.002.023.0417.0430.hcd:system/bin/BCM4329B1_002.002.023.0417.0430.hcd \\
     vendor/samsung/__DEVICE__/proprietary/bin/btld:system/bin/btld \\
@@ -201,7 +203,6 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/bin/drexe:system/bin/drexe \\
     vendor/samsung/__DEVICE__/proprietary/bin/hciattach:system/bin/hciattach \\
     vendor/samsung/__DEVICE__/proprietary/bin/npsmobex:system/bin/npsmobex \\
-    vendor/samsung/__DEVICE__/proprietary/bin/immvibed:system/bin/immvibed \\
     vendor/samsung/__DEVICE__/proprietary/bin/killmediaserver:system/bin/killmediaserver \\
     vendor/samsung/__DEVICE__/proprietary/bin/logwrapper:system/bin/logwrapper \\
     vendor/samsung/__DEVICE__/proprietary/bin/mfgloader:system/bin/mfgloader \\
@@ -276,7 +277,7 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/lib/libtvout_jni.so:system/lib/libtvout_jni.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libtvoutservice.so:system/lib/libtvoutservice.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:system/lib/libtvout.so \\
-    vendor/samsung/__DEVICE__/proprietary/lib/libwlservice.so:system/lib/libwlservice.so 
+    vendor/samsung/__DEVICE__/proprietary/lib/libwlservice.so:system/lib/libwlservice.so
 
 #
 # Sensors
