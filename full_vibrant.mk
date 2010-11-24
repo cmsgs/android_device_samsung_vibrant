@@ -96,6 +96,8 @@ PRODUCT_COPY_FILES += \
     device/samsung/vibrant/prebuilt/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin 
 
 PRODUCT_COPY_FILES += \
+    device/samsung/vibrant/prebuilt/cameradata/datapattern_420sp.yuv:system/cameradata/datapattern_420sp.yuv  \
+    device/samsung/vibrant/prebuilt/cameradata/datapattern_front_420sp.yuv:system/cameradata/datapattern_front_420sp.yuv \
     device/samsung/vibrant/prebuilt/etc/asound.conf:system/etc/asound.conf \
     device/samsung/vibrant/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/samsung/vibrant/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg

@@ -38,7 +38,6 @@ bin/dhcpcd
 bin/drexe
 bin/hciattach
 bin/npsmobex
-bin/immvibed
 bin/killmediaserver
 bin/logwrapper
 bin/mfgloader
@@ -47,15 +46,9 @@ bin/npsmobex
 bin/pvrsrvinit
 bin/rilclient-test
 bin/rild
-bin/tvoutserver
-bin/vold
 bin/wlservice
 bin/wpa_supplicant
 etc/dhcpcd/dhcpcd.conf
-etc/dhcpcd/dhcpcd-hooks/01-test
-etc/dhcpcd/dhcpcd-hooks/20-dns.conf
-etc/dhcpcd/dhcpcd-hooks/95-configured
-etc/dhcpcd/dhcpcd-run-hooks
 etc/wifi/bcm4329_aps.bin
 etc/wifi/bcm4329_mfg.bin
 etc/wifi/bcm4329_sta.bin
@@ -67,6 +60,7 @@ firmware/CE147F00.bin
 firmware/CE147F01.bin
 firmware/CE147F02.bin
 firmware/CE147F03.bin
+lib/libglslcompiler.so
 lib/egl/libEGL_POWERVR_SGX540_120.so
 lib/egl/libGLES_android.so
 lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so
@@ -80,25 +74,34 @@ lib/libIMGegl.so
 lib/libpvr2d.so
 lib/libpvrANDROID_WSEGL.so
 lib/libPVRScopeServices.so
-lib/libglslcompiler.so
 
 lib/libreference-ril.so
 lib/libril.so
+
+lib/libarccamera.so
+lib/libcamerafirmwarejni.so
+lib/libcamera.so
+lib/libcameraservice.so
+lib/libseccameraadaptor.so
+lib/libseccamera.so
+lib/libs3cjpeg.so
+lib/libcamera_client.so
+lib/libsurfaceflinger_client.so
+
 
 lib/libs263domxoc.so
 lib/libs263eomxoc.so
 lib/libs264domxoc.so
 lib/libs264eomxoc.so
-lib/libs3cjpeg.so
 lib/libsaacdomxoc.so
 lib/libsaaceomxoc.so
 lib/libsac3domxoc.so
 lib/libsamrdomxoc.so
 lib/libsamreomxoc.so
 lib/libsdiv3domxoc.so
-lib/libseccameraadaptor.so
-lib/libseccamera.so
+
 lib/libsecgps.so
+lib/libclientgps.so
 
 lib/libsecril-client.so
 lib/libsec-ril.so
@@ -108,18 +111,22 @@ lib/libsmp3domxoc.so
 lib/libsmp4fmocn.so
 lib/libsmp4vdomxoc.so
 lib/libsmp4veomxoc.so
-lib/libsrv_init.so
-lib/libsrv_um.so
 lib/libsvc1domxoc.so
 lib/libswmadomxoc.so
 lib/libswmv7domxoc.so
 lib/libswmv8domxoc.so
+
+lib/libsrv_init.so
+lib/libsrv_um.so
+
 lib/lib_tvoutengine.so
 lib/libtvoutfimc.so
 lib/libtvouthdmi.so
 lib/libtvout_jni.so
 lib/libtvoutservice.so
 lib/libtvout.so
+bin/tvoutserver
+
 lib/libwlservice.so
 
 bin/sensorcalibutil_yamaha
@@ -181,6 +188,8 @@ done
 #
 PRODUCT_COPY_FILES := \\
     vendor/samsung/__DEVICE__/proprietary/lib/libclientgps.so:obj/lib/libclientgps.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libcamera.so:obj/lib/libcamera.so.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libs3cjpeg.so:obj/lib/libs3cjpeg.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsecgps.so:obj/lib/libsecgps.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsecril-client.so:obj/lib/libsecril-client.so 
  
