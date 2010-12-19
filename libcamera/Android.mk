@@ -17,9 +17,17 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../libs3cjpeg
 
 
 LOCAL_SRC_FILES:= \
-	SecCamera.cpp \
+	SecCamera.cpp 
+	
+ifeq ($(BOARD_USE_FROYO),true)
+LOCAL_SRC_FILES:= \
 	SecCameraHWInterface.cpp
+endif
 
+ifeq ($(BOARD_USE_OVERLAY),true)
+LOCAL_SRC_FILES:= \
+	SecCameraHWInterface-g.cpp
+endif
 
 LOCAL_SHARED_LIBRARIES:= libutils libui liblog libbinder libcutils
 LOCAL_SHARED_LIBRARIES+= libs3cjpeg

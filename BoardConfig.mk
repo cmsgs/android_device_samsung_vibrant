@@ -51,7 +51,12 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 ANDROID_ARM_LINKER := true
 
 BOARD_USES_HGL := true
-BOARD_USES_OVERLAY := true
+
+# this is is for gingerbread & CAMERA
+#BOARD_USES_OVERLAY := true
+
+#FROYO CAMERA
+BOARD_USES_FROYO := true
 
 USE_CAMERA_STUB := false
 ifeq ($(USE_CAMERA_STUB),false)
