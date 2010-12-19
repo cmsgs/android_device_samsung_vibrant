@@ -68,6 +68,27 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/vibrant/overlay
 # media profiles and capabilities spec
 $(call inherit-product, device/samsung/vibrant/media_a1026.mk)
 
+# These are the OpenMAX IL configuration files
+PRODUCT_COPY_FILES += \
+    device/samsung/vibrant/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry
+
+# These are the OpenMAX IL modules
+PRODUCT_PACKAGES += \
+    libSEC_OMX_Core \
+    libOMX.SEC.AVC.Decoder \
+    libOMX.SEC.M4V.Decoder \
+    libOMX.SEC.M4V.Encoder \
+    libOMX.SEC.AVC.Encoder
+
+# Misc other modules
+#PRODUCT_PACKAGES += \
+#    overlay.s5pc110 
+
+# Libs
+PRODUCT_PACKAGES += \
+    libcamera \
+    libstagefrighthw
+
 # media config xml file
 PRODUCT_COPY_FILES += \
     device/samsung/vibrant/media_profiles.xml:system/etc/media_profiles.xml

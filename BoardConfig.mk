@@ -23,6 +23,8 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
+
+
 # inherit from the proprietary version
 -include vendor/samsung/vibrant/BoardConfigVendor.mk
 
@@ -40,8 +42,21 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 
 # Sound related defines
-BOARD_USES_ALSA_AUDIO := true
-BUILD_WITH_ALSA_UTILS := true
+#BOARD_USES_ALSA_AUDIO := true
+#BUILD_WITH_ALSA_UTILS := true
+
+TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
+TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
+ARCH_ARM_HAVE_TLS_REGISTER := true
+ANDROID_ARM_LINKER := true
+
+BOARD_USES_HGL := true
+BOARD_USES_OVERLAY := true
+
+USE_CAMERA_STUB := false
+ifeq ($(USE_CAMERA_STUB),false)
+BOARD_CAMERA_LIBRARIES := libcamera
+endif
 
 # For the FM Radio
 BOARD_HAVE_FM_RADIO := true
