@@ -17,8 +17,8 @@
 /*#define LOG_NDEBUG 0*/
 #define LOG_TAG "SEC_Overlay"
 
-#include <hardware/hardware.h>
-#include <hardware/overlay.h>
+#include "hardware.h"
+#include "overlay.h"
 
 extern "C" {
 #include "v4l2_utils.h"

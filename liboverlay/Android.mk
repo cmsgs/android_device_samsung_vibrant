@@ -17,6 +17,10 @@ ifeq ($(BOARD_USES_OVERLAY),true)
 LOCAL_PATH:= $(call my-dir)
 # HAL module implemenation, not prelinked and stored in
 # hw/<COPYPIX_HARDWARE_MODULE_ID>.<ro.product.board>.so
+LOCAL_C_INCLUDES:= \
+      $(LOCAL_PATH)/../include
+
+
 
 include $(CLEAR_VARS)
 LOCAL_PRELINK_MODULE := false
