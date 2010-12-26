@@ -53,7 +53,7 @@ ANDROID_ARM_LINKER := true
 BOARD_USES_HGL := true
 
 # this is is for gingerbread & CAMERA
-#BOARD_USES_OVERLAY := true
+BOARD_USES_OVERLAY := true
 
 #FROYO CAMERA
 BOARD_USES_FROYO := true
