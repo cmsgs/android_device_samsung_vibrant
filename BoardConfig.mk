@@ -23,14 +23,12 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
-
-
 # inherit from the proprietary version
 -include vendor/samsung/vibrant/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
 #TARGET_NO_RECOVERY := true
-TARGET_NO_KERNEL := true
+#TARGET_NO_KERNEL := true
 
 TARGET_BOARD := SGH-T959
 TARGET_BOARD_PLATFORM := s5pc110
@@ -40,11 +38,6 @@ TARGET_BOARD_PLATFORM_GPU := POWERVR_SGX540_120
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
-
-# Sound related defines
-#BOARD_USES_ALSA_AUDIO := true
-#BUILD_WITH_ALSA_UTILS := true
-
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
 ARCH_ARM_HAVE_TLS_REGISTER := true
@@ -52,45 +45,48 @@ ANDROID_ARM_LINKER := true
 
 BOARD_USES_HGL := true
 
-# this is is for gingerbread & CAMERA
+# Camera defines
+BOARD_USES_FROYO := true
+USE_CAMERA_STUB := false
 BOARD_USES_OVERLAY := true
 
-#FROYO CAMERA
-BOARD_USES_FROYO := true
-
-USE_CAMERA_STUB := false
-ifeq ($(USE_CAMERA_STUB),false)
-BOARD_CAMERA_LIBRARIES := libcamera
+# Audio defines 
+BOARD_USES_GENERIC_AUDIO := false
+BOARD_USES_NEXUS_S_AUDIO := true
+ifeq ($(BOARD_USES_NEXUS_S_AUDIO),false)
+BOARD_USES_ALSA_AUDIO := true
+BUILD_WITH_ALSA_UTILS := true
+ALSA_DEFAULT_SAMPLE_RATE := 44100
 endif
 
-# For the FM Radio
+# FM Radio
 BOARD_HAVE_FM_RADIO := true
 
-# WiFi related defines
+# WiFi defines
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
 WPA_SUPPLICANT_VERSION := VER_0_6_X
-BOARD_WLAN_DEVICE := eth0
+WIFI_DRIVER_FW_STA_PATH := "/system/etc/wifi/bcm4329_sta.bin"
+WIFI_DRIVER_FW_AP_PATH := "/system/etc/wifi/bcm4329_aps.bin"
+BOARD_WLAN_DEVICE := bcm4329
 WIFI_DRIVER_MODULE_PATH := "/lib/modules/dhd.ko"
-MFGDRV_MODULE_ARG := "firmware_path=/system/etc/wifi/bcm4329_mfg.bin nvram_path=/system/etc/wifi/nvram_mfg.txt"
-DRV_AP_MODULE_ARG := "firmware_path=/system/etc/wifi/bcm4329_aps.bin nvram_path=/system/etc/wifi/nvram_net.txt dhd_watchdog_ms=200 dhd_poll=1"
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wifi/bcm4329_sta.bin nvram_path=/system/etc/wifi/nvram_net.txt dhd_watchdog_ms=10 dhd_poll=1"
 WIFI_DRIVER_MODULE_NAME := "dhd"
+WIFI_IFACE_DIR  := "/data/wifi"
+WIFI_SUPP_CONFIG_FILE :=  "/data/wifi/bcm_supp.conf"
+CONFIG_DRIVER_WEXT := true
 
-# Bluetooth related defines
+# USB tethering
+RNDIS_DEVICE := "/sys/devices/virtual/sec/switch/tethering"
+
+# Bluetooth defines
 BOARD_HAVE_BLUETOOTH_BCM := true
-
 BOARD_HAVE_BLUETOOTH := true
 BT_USE_BTL_IF := true
 BT_ALT_STACK := true
 BRCM_BTL_INCLUDE_A2DP := true
 BRCM_BT_USE_BTL_IF := true
+WITH_A2DP := true
 
-# Camera related defines
-USE_CAMERA_STUB := false
-BOARD_OVERLAY_FORMAT_YCbRc_420_SP := true
-BOARD_EGL_CFG := device/samsung/vibrant/prebuilt/lib/egl/egl.cfg
-BUILD_PV_VIDEO_ENCODERS := 1
-BOARD_USES_ECLAIR_CAMERA := true
 
 # Device related defines
 
@@ -127,5 +123,5 @@ BOARD_CACHE_FILESYSTEM_OPTIONS := llw,check=no,nosuid,nodev
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
 BOARD_EMMC_DEVICE := /dev/block/mmcblk0p1
 BOARD_USES_BMLUTILS := true
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := device/samsung/vibrant/vibrant_recovery_ui.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/vibrant/vibrant_recovery_ui.c
 BOARD_HAS_SMALL_RECOVERY := true

@@ -38,7 +38,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libsec-ril.so \
     rild.libargs=-d /dev/ttyS0 \
     wifi.interface=eth0 \
-    wifi.supplicant_scan_interval=15
+    wifi.supplicant_scan_interval=15 \
+    ro.wifi.channels=11
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
@@ -81,8 +82,8 @@ PRODUCT_PACKAGES += \
     libOMX.SEC.AVC.Encoder
 
 # Misc other modules
-#PRODUCT_PACKAGES += \
-#    overlay.s5pc110 
+PRODUCT_PACKAGES += \
+    overlay.s5pc110 
 
 # Libs
 PRODUCT_PACKAGES += \
@@ -102,7 +103,7 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml
+    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 # Keylayout / Keychars
 PRODUCT_COPY_FILES += \
@@ -130,7 +131,6 @@ LOCAL_KERNEL := device/samsung/vibrant/kernel
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
