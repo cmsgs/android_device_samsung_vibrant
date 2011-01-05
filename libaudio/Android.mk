@@ -1,3 +1,6 @@
+
+ifeq ($(BOARD_USES_NEXUS_S_AUDIO),true)
+
 LOCAL_PATH:= $(call my-dir)
 
 
@@ -48,3 +51,4 @@ ifeq ($(BOARD_HAVE_BLUETOOTH),true)
   LOCAL_CFLAGS += -DWITH_A2DP
 endif
 include $(BUILD_SHARED_LIBRARY)
+endif
