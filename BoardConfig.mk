@@ -127,4 +127,5 @@ BOARD_CACHE_FILESYSTEM_OPTIONS := llw,check=no,nosuid,nodev
 BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
 BOARD_EMMC_DEVICE := /dev/block/mmcblk0p1
 BOARD_USES_BMLUTILS := true
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := device/samsung/vibrant/vibrant_recovery_ui.c
 BOARD_HAS_SMALL_RECOVERY := true
