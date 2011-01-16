@@ -45,6 +45,8 @@ ANDROID_ARM_LINKER := true
 
 BOARD_USES_HGL := true
 
+BOARD_USES_NEXUS_S_LIBS := TRUE
+
 # Camera defines
 BOARD_USES_FROYO := true
 USE_CAMERA_STUB := false
