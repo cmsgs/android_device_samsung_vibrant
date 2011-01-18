@@ -61,6 +61,8 @@ BOARD_USES_OVERLAY := true
 ifeq ($(USE_CAMERA_STUB),false)
 BOARD_CAMERA_LIBRARIES := libcamera
 endif
+BOARD_V4L2_DEVICE := /dev/video0
+BOARD_CAMERA_DEVICE := /dev/video2
 
 # Audio defines 
 BOARD_USES_GENERIC_AUDIO := false
