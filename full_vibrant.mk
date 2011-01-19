@@ -20,7 +20,7 @@ $(call inherit-product, device/samsung/common/galaxys.mk)
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_COPY_FILES += \
     device/samsung/vibrant/init.smdkc110.rc:root/init.smdkc110.rc \
-    device/samsung/vibrant/ueventd.latte.rc:root/ueventd.latte.rc
+    device/samsung/vibrant/ueventd.smdkc110.rc:root/ueventd.smdkc110.rc
 
 # GSM Overrides
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -70,9 +70,9 @@ DEVICE_PACKAGE_OVERLAYS += device/samsung/vibrant/overlay
 
 # Packages
 PRODUCT_PACKAGES += \
-    overlay.s5pc110 \
-    sensors.s5pc110 \
-    gps.s5pc110 \
+    overlay.smdkc110 \
+    sensors.smdkc110 \
+    gps.smdkc110 \
     libOmxCore
 
 # Keylayout / Keychars
