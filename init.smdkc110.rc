@@ -1,4 +1,6 @@
 on boot
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+
     setprop net.eth0.dns1 8.8.8.8
     setprop net.eth0.dns2 4.2.2.2
     setprop ro.build.product smdkc110

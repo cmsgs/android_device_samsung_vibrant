@@ -19,8 +19,10 @@ $(call inherit-product, device/samsung/common/galaxys.mk)
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_COPY_FILES += \
-    device/samsung/vibrant/init.smdkc110.rc:root/init.smdkc110.rc
+    device/samsung/vibrant/init.smdkc110.rc:root/init.smdkc110.rc \
+    device/samsung/vibrant/ueventd.latte.rc:root/ueventd.latte.rc
 
+# GSM Overrides
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240 \
     rild.libpath=/system/lib/libsec-ril.so \
@@ -33,6 +35,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product-if-exists, vendor/samsung/vibrant/vibrant-vendor.mk)
 
 ## (3) Finally, the least specific parts, i.e. the non-GSM-specific aspects
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.clientidbase=android-tmobile-us \
+    ro.com.google.clientidbase.vs=android-hms-tmobile-us \
+    ro.com.google.clientidbase.ms=android-hms-tmobile-us \
+    ro.com.google.locationfeatures=1 \
+    ro.com.google.networklocation=1 \
+    ro.setupwizard.enable_bypass=1 \
+    ro.media.dec.aud.wma.enabled=1 \
+    ro.media.dec.vid.wmv.enabled=1 \
+    dalvik.vm.dexopt-flags=m=y
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
@@ -56,9 +68,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 DEVICE_PACKAGE_OVERLAYS += device/samsung/vibrant/overlay
 
-# Misc other modules
+# Packages
 PRODUCT_PACKAGES += \
-    overlay.s5pc110 
+    overlay.s5pc110 \
+    sensors.s5pc110 \
+    gps.s5pc110 \
+    libOmxCore
 
 # Keylayout / Keychars
 PRODUCT_COPY_FILES += \
@@ -81,13 +96,8 @@ PRODUCT_COPY_FILES += \
 
 
 # Kernel
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/samsung/vibrant/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
+TARGET_PREBUILT_KERNEL := device/samsung/vibrant/prebuilt/kernel
+LOCAL_KERNEL := device/samsung/vibrant/prebuilt/kernel
 
 PRODUCT_NAME := full_vibrant
 PRODUCT_DEVICE := vibrant

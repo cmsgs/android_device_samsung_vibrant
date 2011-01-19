@@ -43,9 +43,15 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
 ARCH_ARM_HAVE_TLS_REGISTER := true
 ANDROID_ARM_LINKER := true
 
+JS_ENGINE := v8
+
 BOARD_USES_HGL := true
 
+TARGET_PROVIDES_INIT_TARGET_RC := true
+
 BOARD_USES_NEXUS_S_LIBS := TRUE
+
+BOARD_USES_GPSSHIM:=true
 
 # Camera defines
 USE_CAMERA_STUB := false
@@ -55,7 +61,6 @@ BOARD_USES_OVERLAY := true
 ifeq ($(USE_CAMERA_STUB),false)
 BOARD_CAMERA_LIBRARIES := libcamera
 endif
-
 
 # Audio defines 
 BOARD_USES_GENERIC_AUDIO := false
@@ -97,7 +102,6 @@ WITH_A2DP := true
 
 # Device related defines
 
-TARGET_PREBUILT_KERNEL := device/samsung/vibrant/kernel
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x02e00000
 
