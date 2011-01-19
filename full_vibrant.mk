@@ -14,24 +14,12 @@
 # limitations under the License.
 #
 
-#
-# This is the product configuration for a generic GSM passion,
-# not specialized for any geography.
-#
-
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
+# Inherit some common Samsung stuff.
+$(call inherit-product, device/samsung/common/galaxys.mk)
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_COPY_FILES += \
     device/samsung/vibrant/init.smdkc110.rc:root/init.smdkc110.rc
-
-## (2) Also get non-open-source GSM-specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/vibrant/vibrant-vendor.mk)
-
-## (3) Finally, the least specific parts, i.e. the non-GSM-specific aspects
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240 \
@@ -40,6 +28,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=eth0 \
     wifi.supplicant_scan_interval=15 \
     ro.wifi.channels=11
+
+## (2) Also get non-open-source GSM-specific aspects if available
+$(call inherit-product-if-exists, vendor/samsung/vibrant/vibrant-vendor.mk)
+
+## (3) Finally, the least specific parts, i.e. the non-GSM-specific aspects
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
@@ -61,49 +54,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.enable-http=true \
     keyguard.no_require_sim=true 
 
-# Galaxy S uses high-density artwork where available
-PRODUCT_LOCALES := hdpi
-
 DEVICE_PACKAGE_OVERLAYS += device/samsung/vibrant/overlay
-
-# media profiles and capabilities spec
-$(call inherit-product, device/samsung/vibrant/media_a1026.mk)
-
-# These are the OpenMAX IL configuration files
-PRODUCT_COPY_FILES += \
-    device/samsung/vibrant/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry
-
-# These are the OpenMAX IL modules
-PRODUCT_PACKAGES += \
-    libSEC_OMX_Core \
-    libOMX.SEC.AVC.Decoder \
-    libOMX.SEC.M4V.Decoder \
-    libOMX.SEC.M4V.Encoder \
-    libOMX.SEC.AVC.Encoder
 
 # Misc other modules
 PRODUCT_PACKAGES += \
     overlay.s5pc110 
-
-# Libs
-PRODUCT_PACKAGES += \
-    libcamera \
-    libstagefrighthw
-
-# media config xml file
-PRODUCT_COPY_FILES += \
-    device/samsung/vibrant/media_profiles.xml:system/etc/media_profiles.xml
-
-# Install the features available on this device.
-PRODUCT_COPY_FILES += \
-    frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 # Keylayout / Keychars
 PRODUCT_COPY_FILES += \
@@ -133,8 +88,6 @@ LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
-
-$(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_NAME := full_vibrant
 PRODUCT_DEVICE := vibrant
