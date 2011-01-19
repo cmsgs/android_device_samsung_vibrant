@@ -48,9 +48,14 @@ BOARD_USES_HGL := true
 BOARD_USES_NEXUS_S_LIBS := TRUE
 
 # Camera defines
-BOARD_USES_FROYO := true
 USE_CAMERA_STUB := false
 BOARD_USES_OVERLAY := true
+#USE_OVERLAY_FORMAT_YCbCr_420_SP := TRUE
+#BUILD_PV_VIDEO_ENCODERS := 1
+ifeq ($(USE_CAMERA_STUB),false)
+BOARD_CAMERA_LIBRARIES := libcamera
+endif
+
 
 # Audio defines 
 BOARD_USES_GENERIC_AUDIO := false
