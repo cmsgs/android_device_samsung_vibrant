@@ -99,7 +99,7 @@ PRODUCT_COPY_FILES += \
 TARGET_PREBUILT_KERNEL := device/samsung/vibrant/prebuilt/kernel
 LOCAL_KERNEL := device/samsung/vibrant/prebuilt/kernel
 
-PRODUCT_NAME := full_vibrant
+PRODUCT_NAME := generic_vibrant
 PRODUCT_DEVICE := vibrant
 PRODUCT_MODEL := SGH-T959
 PRODUCT_BRAND := Samsung
